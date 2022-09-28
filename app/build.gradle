@@ -4,11 +4,11 @@ plugins {
 
     id 'androidx.navigation.safeargs.kotlin'
 
-    id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
-
     id 'org.jetbrains.kotlin.plugin.serialization'
     id 'kotlin-parcelize'
+
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -26,8 +26,17 @@ android {
     }
 
     buildTypes {
+
+        debug {
+            minifyEnabled false
+            // for the task purposes
+            buildConfigField "String", "TMDB_API_KEY", "\"1884de2ec6d3e9d5309dc4679ba36d96\""
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
         release {
             minifyEnabled false
+            // for the task purposes
+            buildConfigField "String", "TMDB_API_KEY", "\"1884de2ec6d3e9d5309dc4679ba36d96\""
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -37,6 +46,9 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 
