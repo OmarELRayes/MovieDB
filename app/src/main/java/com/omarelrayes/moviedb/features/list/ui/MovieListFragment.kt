@@ -1,4 +1,4 @@
-package com.omarelrayes.moviedb.features.list
+package com.omarelrayes.moviedb.features.list.ui
 
 import androidx.fragment.app.Fragment
 

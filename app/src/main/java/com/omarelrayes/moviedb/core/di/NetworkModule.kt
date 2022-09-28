@@ -4,6 +4,7 @@ import androidx.viewbinding.BuildConfig
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.omarelrayes.moviedb.core.api.ApiConstants
 import com.omarelrayes.moviedb.core.api.RequestInterceptor
+import com.omarelrayes.moviedb.features.list.data.MoviesService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -61,5 +62,11 @@ object NetworkModule {
     @OptIn(ExperimentalSerializationApi::class)
     private fun getJsonConverterFactory(): Converter.Factory {
         return json.asConverterFactory(CONTENT_TYPE_VALUE.toMediaType())
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserService(retrofit: Retrofit): MoviesService {
+        return retrofit.create(MoviesService::class.java)
     }
 }

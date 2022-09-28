@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/movieListFragment"
-        android:name="com.omarelrayes.moviedb.features.list.MovieListFragment"
+        android:name="com.omarelrayes.moviedb.features.list.ui.MovieListFragment"
         android:label="fragment_movie_list"
         tools:layout="@layout/fragment_movie_list" />
 </navigation>
