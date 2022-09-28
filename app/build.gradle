@@ -62,7 +62,7 @@ dependencies {
 
     def ktx_version = '2.5.1'
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$ktx_version"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx_version:$ktx"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$ktx_version"
 
     // navigation
     def navigation_version = "2.5.2"
