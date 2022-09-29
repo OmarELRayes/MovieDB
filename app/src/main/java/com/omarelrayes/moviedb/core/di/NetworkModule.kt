@@ -38,7 +38,7 @@ object NetworkModule {
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(RequestInterceptor())
-            .addNetworkInterceptor(logger)
+            .addInterceptor(logger)
             .build()
     }
 

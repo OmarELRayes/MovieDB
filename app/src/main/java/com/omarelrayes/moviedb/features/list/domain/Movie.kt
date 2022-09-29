@@ -7,7 +7,7 @@ import kotlinx.serialization.Serializable
 data class Movie(
     val id: Int,
     @SerialName("original_title") val title: String,
-    @SerialName("backdrop_path") val image: String,
+    @SerialName("poster_path") val image: String?,
     val overview: String,
     @SerialName("release_date") val releaseDate: String
 )
