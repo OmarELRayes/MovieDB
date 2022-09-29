@@ -33,9 +33,19 @@ class MoviesAdapter(
     inner class MovieViewHolder(private val binding: ItemMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
+        init {
+            binding.poster.setOnClickListener {
+                getItem(bindingAdapterPosition)?.let { movie ->
+                    onMovieClick(
+                        movie
+                    )
+                }
+            }
+        }
+
         fun bind(movie: Movie) {
-            binding.poster.load(ApiConstants.BASE_IMAGE_PATH + movie.image) {
-                error(R.drawable.ic_popular_enabled)
+            binding.poster.load(ApiConstants.getFullImagePath(movie.image)) {
+                error(R.drawable.ic_error)
             }
         }
     }

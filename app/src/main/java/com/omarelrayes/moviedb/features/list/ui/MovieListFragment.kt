@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.omarelrayes.moviedb.R
@@ -52,7 +53,7 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
 
         viewLifecycleOwner.lifecycleScope.launchWhenCreated {
             adapter.loadStateFlow
-                .distinctUntilChangedBy { it.prepend }
+                .distinctUntilChangedBy { it.refresh }
                 .filter { it.refresh is LoadState.NotLoading }
                 .collect { binding.moviesRecycler.scrollToPosition(0) }
         }
@@ -82,5 +83,8 @@ class MovieListFragment : Fragment(R.layout.fragment_movie_list) {
     }
 
     private fun onMovieClick(movie: Movie) {
+        val action =
+            MovieListFragmentDirections.actionMovieListFragmentToMovieDetailsFragment(movie)
+        findNavController().navigate(action)
     }
 }
